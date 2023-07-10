@@ -28,7 +28,7 @@ body {
     display: grid;
     grid-template-columns: repeat(16, minmax(0, 1fr));
     grid-template-rows: repeat(16, minmax(0, 1fr));
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 
