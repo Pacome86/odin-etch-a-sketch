@@ -27,6 +27,12 @@ rainbowBtn.addEventListener('click', rainbowInk);
 const clearBtn = document.querySelector('#clear');
 clearBtn.addEventListener('click', clear);
 
+// Buttons style
+function rainbowBg() {
+    return rainbowBtn.style.backgroundColor = toRainbow();
+}
+setInterval(rainbowBg, 1000);
+
 
 // Actions:
 
@@ -80,6 +86,7 @@ function color(e){
 
 //  Change the color of each squares/cell to black
 function blackInk() {
+    colorMode = toBlack;
     const grid = Array.from(document.querySelectorAll('.cell'));
     grid.forEach(cell => cell.addEventListener('mouseover', color)); 
     const newGrid = Array.from(document.getElementsByClassName('.newCell'));
@@ -100,4 +107,3 @@ function rainbowInk() {
 function clear() {
     document.location.reload();   
 }
-

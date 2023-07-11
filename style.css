@@ -7,31 +7,56 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(250, 241, 230);
+    font-family: 'Permanent Marker', cursive, 'Roboto', 'Helvetica Neue', sans-serif;
 }
 
-#hero {
-    margin-top: -12%;
+h1 {
+font-size: 3rem;
 }
 
 #btnContainer {
-    margin-bottom: 4%;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    
 }
 
 .button {
-    width: 80px;
-    padding: 8px;
+    width: 6rem;
+    padding: .6rem;
+    font-size: 1.2rem;
+    font-family: 'Pacifico', cursive, 'Roboto', 'Helvetica Neue', sans-serif;
+    background-color:rgb(247, 201, 201);
+    box-shadow: 4rem 4rem 8rem rgba(0, 0, 0, .06);
+    border-radius: 1rem;
+    cursor: pointer;
+    
+    
+}
+
+button#rainbow {
+    color: aliceblue;
+}
+
+button#black {
+    color: aliceblue;
+    background-color: black;
 }
 
 #container {
-    width: 40%;
+    width: 30%;
     height: 60%;
     display: grid;
     grid-template-columns: repeat(16, minmax(0, 1fr));
     grid-template-rows: repeat(16, minmax(0, 1fr));
-    /* background-color: bisque; */
+    background-color: cornsilk;
+    margin-bottom: 3rem;
+    border: 2.4rem solid #bd4848;
+    border-radius: 2rem;
+    box-shadow: 1rem 1rem 1rem rgb(4, 3, 32);
 }
 
-
-
-
-
+#footer a {
+    font-size: 1.5rem;
+}
