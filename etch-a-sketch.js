@@ -1,4 +1,4 @@
-// Initial grid: a 16x16 grid with square divs
+// Initial: a 16x16 grid with square divs
 
 const container = document.querySelector('#container');
 
@@ -11,11 +11,11 @@ container.appendChild(cell);
 
 // Buttons:
 
-// Button to prompt for number of squares per side
+// Prompt for number of squares per side
 const reset = document.querySelector('#reset');
 reset.addEventListener('click', gridSize);
 
-// Button to change the color from white to black
+// Change the color from white to black
 const blackBtn = document.querySelector('#black');
 blackBtn.addEventListener('click', blackInk);
 
@@ -29,6 +29,9 @@ clearBtn.addEventListener('click', clear);
 
 
 // Actions:
+
+// Global to feed new data inside of color(e)
+let colorMode = toBlack;
 
 // Change grid size based on prompt
 function gridSize() {
@@ -56,38 +59,45 @@ function generateGrid(value) {
     }   
 }
 
-// Background of squares/cell to black
-function toBlack(e) {
-    e.target.style.backgroundColor = 'black';
+// Give me black ink
+function toBlack() {
+    return 'black';
 }
 
-// Background of squares/cell to random color
-function toRainbow(e) {
+// Give me random color ink
+function toRainbow() {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
     const blue = Math.floor(Math.random() * 256);
     const cellBgColor = 'rgb(' + red + ',' + ' ' + green + ',' + ' ' + blue + ')';
-    e.target.style.backgroundColor = cellBgColor; 
+    return cellBgColor;
+}
+
+// Listen to the mouseover event and paint the background based on the colorMode setting
+function color(e){
+  e.target.style.backgroundColor = colorMode();
 }
 
 //  Change the color of each squares/cell to black
 function blackInk() {
     const grid = Array.from(document.querySelectorAll('.cell'));
-    grid.forEach(cell => cell.addEventListener('mouseover', toBlack)); 
+    grid.forEach(cell => cell.addEventListener('mouseover', color)); 
     const newGrid = Array.from(document.getElementsByClassName('.newCell'));
-    newGrid.forEach(newCell => newCell.addEventListener('mouseover', toBlack));
+    newGrid.forEach(newCell => newCell.addEventListener('mouseover', color));
  }
 
  //  Change the color of each squares/cell to random color
 function rainbowInk() {
+    colorMode = toRainbow;
     const grid = Array.from(document.querySelectorAll('.cell'));
-    grid.forEach(cell => cell.addEventListener('mouseover', toRainbow));
+    grid.forEach(cell => cell.addEventListener('mouseover', color));
 
     const newGrid = Array.from(document.getElementsByClassName('.newCell'));
-    newGrid.forEach(newCell => newCell.addEventListener('mouseover', toRainbow));    
+    newGrid.forEach(newCell => newCell.addEventListener('mouseover', color));    
 }
 
 // Return  grid to initial state
 function clear() {
     document.location.reload();   
 }
+
