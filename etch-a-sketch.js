@@ -41,9 +41,9 @@ let colorMode = toBlack;
 
 // Change grid size based on prompt
 function gridSize() {
-    let value = prompt("How many squares per side? (100 maximum)");
+    let value = prompt("How many squares per side?", "100 maximum");
     if (value > 100) {
-        let val = prompt("Enter a number between 0 and 100 ");
+        let val = prompt("Enter a number between 0 and 100", "100 maximum");
         return generateGrid(val); 
     } else {
         return generateGrid(value);
